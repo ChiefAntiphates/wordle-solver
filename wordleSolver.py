@@ -135,14 +135,18 @@ def solve(helping):
         known = input("\nPlease enter which (if any) characters were in the correct place: ").lower().strip()
         close = input("\nPlease enter which (if any) characters were correct but in the wrong place: ").lower().strip()
 
+        word = computer_guess
+        if helping:
+            word = guess
+
         for char in known:
             if char in close_chars:
                 close_chars.remove(char)
             if char not in found_chars:
                 found_chars.append(char)
             indexes = []
-            for i in range(len(guess)):
-                if guess[i] == char:
+            for i in range(len(word)):
+                if word[i] == char:
                     indexes.append(i)
             for i in indexes:
                 regex[i] = char
@@ -150,13 +154,13 @@ def solve(helping):
         for char in close:
             if char not in close_chars:
                 close_chars.append(char)
-            for i in range(len(guess)):
-                if guess[i] == char:
+            for i in range(len(word)):
+                if word[i] == char:
                     if "^" in regex[i]:
                         regex[i] = regex[i][:-1]+char+"]"
                     else:
                         regex[i] = f"[^{char}]"
-        for char in guess:
+        for char in word:
             if char not in known and char not in close:
                 removed_chars.append(char)
         
@@ -165,10 +169,7 @@ def solve(helping):
         potential_words = checkContains(potential_words, close_chars)
         suggested_words = getMostOfCertain(getDifferentCharWords(potential_words), getMostCommonChars(potential_words, found_chars+close_chars))
 
-def playAgainst():
-    solve(helping=False)
-def playWith():
-    solve(helping=True)
+
 
 if __name__ == "__main__":
     game_mode = input("Do you want to play against the solver or use the solver as a tool? (play/tool): ").lower().strip()
