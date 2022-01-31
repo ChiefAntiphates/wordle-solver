@@ -171,7 +171,7 @@ def playWith():
     solve(helping=True)
 
 if __name__ == "__main__":
-    game_mode = input("Do you want to play against the solver or use the solver as a tool? (play/tool)").lower().strip()
+    game_mode = input("Do you want to play against the solver or use the solver as a tool? (play/tool): ").lower().strip()
     valid = False
     while not valid:
         if game_mode == "play":
