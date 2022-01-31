@@ -183,4 +183,4 @@ if __name__ == "__main__":
             solve(helping=True)
             valid=True
         else:
-            game_mode = input("Invalid input. Try again: (play/tool)").lower().strip()
+            game_mode = input("Invalid input. Try again: (play/tool): ").lower().strip()
