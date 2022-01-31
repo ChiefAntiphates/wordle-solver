@@ -161,7 +161,7 @@ def solve(helping):
                     else:
                         regex[i] = f"[^{char}]"
         for char in word:
-            if char not in known and char not in close:
+            if char not in found_chars and char not in close_chars:
                 removed_chars.append(char)
         
         potential_words = checkNotContains(potential_words, removed_chars)
