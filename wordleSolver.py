@@ -129,7 +129,7 @@ def solve(helping):
         else:
             if input("\nIs my guess correct? (y/n): ").lower().strip() == 'y':
                 found = True
-                print(f"\n\nI got the right answer of '{guess}'! After {guesses} guesses!")
+                print(f"\n\nI got the right answer of '{computer_guess}'! After {guesses} guesses!")
                 break
         
         known = input("\nPlease enter which (if any) characters were in the correct place: ").lower().strip()
